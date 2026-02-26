@@ -12,26 +12,65 @@
 <style>
 body { font-family:'Inter',sans-serif;background:#0E0E0E;scroll-behavior:smooth;overflow-x:hidden;}
 h1,h2,h3{font-family:'Playfair Display',serif;}
-#splash{position:fixed;inset:0;background:#0E0E0E;z-index:9999;}
-#splash.fade-out{opacity:0;transition:opacity 1s ease;pointer-events:none;}
-.hero-bg{background-image:url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea');background-size:cover;background-position:center;animation:zoom 20s ease-in-out infinite alternate;}
-@keyframes zoom{from{transform:scale(1);}to{transform:scale(1.08);}}
-.fade-up{opacity:0;transform:translateY(40px);transition:all .8s ease;}
-.fade-up.visible{opacity:1;transform:translateY(0);}
-.fruit{position:fixed;top:-50px;font-size:28px;animation:fall linear forwards;pointer-events:none;}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0;}}
+
+#splash{
+position:fixed;
+inset:0;
+background:#0E0E0E;
+z-index:9999;
+}
+#splash.fade-out{
+opacity:0;
+transition:opacity 0.8s ease;
+pointer-events:none;
+}
+
+.hero-bg{
+background-image:url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea');
+background-size:cover;
+background-position:center;
+animation:zoom 20s ease-in-out infinite alternate;
+}
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.08);}
+}
+
+.fade-up{
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+.fade-up.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.fruit{
+position:fixed;
+top:-60px;
+font-size:30px;
+pointer-events:none;
+animation:fall linear forwards;
+}
+@keyframes fall{
+to{
+transform:translateY(120vh) rotate(360deg);
+opacity:0;
+}
+}
 details summary{cursor:pointer;}
 </style>
 </head>
 
 <body class="text-neutral-200">
 
-<!-- SPLASH INTRO -->
+<!-- INTRO -->
 <div id="splash">
 <canvas id="canvas"></canvas>
 </div>
 
-<div id="mainContent" class="opacity-0 transition-opacity duration-1000">
+<div id="mainContent" class="opacity-0 transition-opacity duration-700">
 
 <!-- HERO -->
 <section class="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden">
@@ -39,14 +78,26 @@ details summary{cursor:pointer;}
 <div class="absolute inset-0 bg-black/60"></div>
 
 <div class="relative z-10 max-w-2xl fade-up">
-<p class="text-sm tracking-widest uppercase text-neutral-400 mb-3">Ouverture le 12 mars — Abonnements limités</p>
+<p class="text-sm tracking-widest uppercase text-neutral-400 mb-3">
+Ouverture le 12 mars — Abonnements limités
+</p>
+
 <h1 class="text-5xl md:text-6xl mb-6">PAPAYA</h1>
-<p class="text-xl text-neutral-300 mb-4">Le bar à fruits chic de Jarry.</p>
-<p class="mb-8 text-neutral-400">Fruits frais coupés chaque matin. Smoothies et jus pressés minute. Commandez. Récupérez. Commencez votre journée léger.</p>
+<p class="text-xl text-neutral-300 mb-4">
+Le bar à fruits chic de Jarry.
+</p>
+<p class="mb-8 text-neutral-400">
+Fruits frais coupés chaque matin. Smoothies et jus pressés minute.
+Commandez. Récupérez. Commencez votre journée léger.
+</p>
 
 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button onclick="dropFruits()" class="bg-white text-black px-6 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">Réserver mon produit</button>
-<a href="#concept" class="border border-neutral-500 px-6 py-3 uppercase text-sm tracking-wide hover:bg-neutral-800 transition">Découvrir le concept</a>
+<button onclick="dropFruits()" class="bg-white text-black px-6 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
+Réserver mon produit
+</button>
+<a href="#concept" class="border border-neutral-500 px-6 py-3 uppercase text-sm tracking-wide hover:bg-neutral-800 transition">
+Découvrir le concept
+</a>
 </div>
 </div>
 </section>
@@ -54,8 +105,14 @@ details summary{cursor:pointer;}
 <!-- PROBLEME -->
 <section id="concept" class="py-24 px-6 text-center max-w-3xl mx-auto fade-up">
 <h2 class="text-3xl mb-8">Le matin, tout va vite.</h2>
-<p class="text-neutral-400 mb-4">Vous voulez manger mieux sans perdre du temps. Acheter des fruits pour les voir s’abîmer n’est plus une option.</p>
-<p class="text-neutral-200 mt-6">Chez PAPAYA, tout est prêt. Frais. Épluché. Découpé. Vous passez, vous prenez, vous filez.</p>
+<p class="text-neutral-400 mb-4">
+Vous voulez manger mieux sans perdre du temps.
+Acheter des fruits pour les voir s’abîmer n’est plus une option.
+</p>
+<p class="text-neutral-200 mt-6">
+Chez PAPAYA, tout est prêt. Frais. Épluché. Découpé.
+Vous passez, vous prenez, vous filez.
+</p>
 </section>
 
 <!-- COMMENT CA MARCHE -->
@@ -72,15 +129,38 @@ details summary{cursor:pointer;}
 <!-- PRODUITS -->
 <section id="produits" class="py-24 px-6 max-w-6xl mx-auto fade-up">
 <h2 class="text-3xl text-center mb-16">Nos Produits</h2>
+
 <div class="grid md:grid-cols-3 gap-8 text-lg">
-<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">🍎 Barquette Classique<p class="text-neutral-400 text-sm mt-2">4,50€</p></div>
-<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">🥭 Barquette Exotique<p class="text-neutral-400 text-sm mt-2">6,50€</p></div>
-<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">🍓 Smoothie Signature<p class="text-neutral-400 text-sm mt-2">6€</p></div>
-<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">🍊 Jus Pressé<p class="text-neutral-400 text-sm mt-2">5,50€</p></div>
-<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">🍍 Toppings Premium<p class="text-neutral-400 text-sm mt-2">+1€</p></div>
+<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+🍎 Barquette Classique
+<p class="text-neutral-400 text-sm mt-2">4,50€</p>
 </div>
+
+<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+🥭 Barquette Exotique
+<p class="text-neutral-400 text-sm mt-2">6,50€</p>
+</div>
+
+<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+🍓 Smoothie Signature
+<p class="text-neutral-400 text-sm mt-2">6€</p>
+</div>
+
+<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+🍊 Jus Pressé
+<p class="text-neutral-400 text-sm mt-2">5,50€</p>
+</div>
+
+<div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+🍍 Toppings Premium
+<p class="text-neutral-400 text-sm mt-2">+1€</p>
+</div>
+</div>
+
 <div class="text-center mt-12">
-<button onclick="dropFruits()" class="bg-white text-black px-8 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">Commander maintenant</button>
+<button onclick="dropFruits()" class="bg-white text-black px-8 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
+Commander maintenant
+</button>
 </div>
 </section>
 
@@ -94,7 +174,9 @@ details summary{cursor:pointer;}
 <li>-15% sur gamme premium</li>
 <li>Accès nouveautés</li>
 </ul>
-<button onclick="dropFruits()" class="bg-white text-black px-8 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">Je réserve mon abonnement</button>
+<button onclick="dropFruits()" class="bg-white text-black px-8 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
+Je réserve mon abonnement
+</button>
 </div>
 </section>
 
@@ -114,7 +196,9 @@ details summary{cursor:pointer;}
 <section class="py-24 px-6 text-center bg-white text-black fade-up">
 <h2 class="text-3xl mb-6">-20% sur votre première commande</h2>
 <p class="mb-8">Pour toute inscription avant le 12 mars.</p>
-<button onclick="dropFruits()" class="border border-black px-8 py-3 uppercase text-sm tracking-wide hover:bg-black hover:text-white transition">Réserver avant l’ouverture</button>
+<button onclick="dropFruits()" class="border border-black px-8 py-3 uppercase text-sm tracking-wide hover:bg-black hover:text-white transition">
+Réserver avant l’ouverture
+</button>
 </section>
 
 <!-- FAQ -->
@@ -136,23 +220,34 @@ PAPAYA — Jarry, Guadeloupe — Contact — Instagram — Mentions légales
 </div>
 
 <script>
-// INTRO ANIMATION
+// INTRO 3 SECONDES
 const canvas=document.getElementById("canvas");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
+
 const fruits=["🍎","🍊","🍉","🍍","🥭","🍓","🍇","🍒"];
 let particles=[];
-for(let i=0;i<40;i++){
-particles.push({x:Math.random()*canvas.width,y:canvas.height+100,size:40+Math.random()*20,speedY:-(8+Math.random()*6),speedX:(Math.random()*6-3),rotation:Math.random()*360,emoji:fruits[Math.floor(Math.random()*fruits.length)]});
+
+for(let i=0;i<50;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:canvas.height+100,
+size:40+Math.random()*20,
+speedY:-(10+Math.random()*8),
+speedX:(Math.random()*8-4),
+rotation:Math.random()*360,
+emoji:fruits[Math.floor(Math.random()*fruits.length)]
+});
 }
+
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 particles.forEach(f=>{
 f.y+=f.speedY;
 f.x+=f.speedX;
-f.speedY+=0.25;
-f.rotation+=5;
+f.speedY+=0.3;
+f.rotation+=6;
 ctx.save();
 ctx.translate(f.x,f.y);
 ctx.rotate(f.rotation*Math.PI/180);
@@ -163,12 +258,13 @@ ctx.restore();
 requestAnimationFrame(animate);
 }
 animate();
+
 setTimeout(()=>{
 document.getElementById("splash").classList.add("fade-out");
 document.getElementById("mainContent").classList.remove("opacity-0");
-},5000);
+},3000);
 
-// Scroll reveal
+// SCROLL ANIMATION
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){entry.target.classList.add("visible");}
@@ -176,9 +272,9 @@ if(entry.isIntersecting){entry.target.classList.add("visible");}
 });
 document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
 
-// Fruits falling
+// FRUITS AU CLIC UNIQUEMENT
 function dropFruits(){
-for(let i=0;i<8;i++){
+for(let i=0;i<10;i++){
 const fruit=document.createElement("div");
 fruit.classList.add("fruit");
 fruit.innerHTML=fruits[Math.floor(Math.random()*fruits.length)];
