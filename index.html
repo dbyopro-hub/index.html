@@ -1,276 +1,234 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>URBAN DROP — Drop limité</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>PAPAYA – Bar à Fruits Premium à Jarry</title>
+  <meta name="description" content="Bar à fruits chic à Jarry. Commandez vos fruits frais, smoothies et jus pressés. Abonnement mensuel disponible. Ouverture le 12 mars.">
 
-    <!-- Bootstrap 5 (CDN) -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <style>
-      .hero {
-        min-height: 70vh;
-        background: radial-gradient(1200px 500px at 10% 10%, rgba(13,110,253,.18), transparent 60%),
-                    radial-gradient(900px 400px at 90% 20%, rgba(25,135,84,.18), transparent 60%),
-                    linear-gradient(135deg, #0b0f19, #111827);
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0E0E0E;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="text-neutral-200">
+
+<!-- HERO -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative bg-black">
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea')] bg-cover bg-center opacity-30"></div>
+
+  <div class="relative z-10 max-w-2xl fade-up">
+    <p class="text-sm tracking-widest uppercase text-neutral-400 mb-3">
+      Ouverture le 12 mars — Abonnements limités
+    </p>
+
+    <h1 class="text-5xl md:text-6xl mb-6">PAPAYA</h1>
+    <p class="text-xl text-neutral-300 mb-4">
+      Le bar à fruits chic de Jarry.
+    </p>
+    <p class="mb-8 text-neutral-400">
+      Fruits frais coupés chaque matin. Smoothies et jus pressés minute.  
+      Commandez. Récupérez. Commencez votre journée léger.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#produits" class="bg-white text-black px-6 py-3 text-sm uppercase tracking-wide hover:opacity-90 transition">
+        Réserver mon produit
+      </a>
+      <a href="#concept" class="border border-neutral-500 px-6 py-3 text-sm uppercase tracking-wide hover:bg-neutral-800 transition">
+        Découvrir le concept
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÈME -->
+<section id="concept" class="py-24 px-6 text-center max-w-3xl mx-auto fade-up">
+  <h2 class="text-3xl mb-8">Le matin, tout va vite.</h2>
+  <p class="text-neutral-400 mb-4">
+    Vous voulez manger mieux sans perdre du temps.
+    Et acheter des fruits pour les voir s’abîmer à la maison n’est plus une option.
+  </p>
+  <p class="text-neutral-200 mt-6">
+    Chez PAPAYA, tout est prêt.  
+    Frais. Épluché. Découpé.  
+    Vous passez, vous prenez, vous filez.
+  </p>
+</section>
+
+<!-- COMMENT ÇA MARCHE -->
+<section class="py-24 px-6 max-w-6xl mx-auto fade-up">
+  <h2 class="text-3xl text-center mb-16">Comment ça marche</h2>
+
+  <div class="grid md:grid-cols-4 gap-10 text-center text-neutral-400">
+    <div>
+      <p class="mb-4 text-neutral-200">1.</p>
+      <p>Choisissez votre produit</p>
+    </div>
+    <div>
+      <p class="mb-4 text-neutral-200">2.</p>
+      <p>Réservez en ligne</p>
+    </div>
+    <div>
+      <p class="mb-4 text-neutral-200">3.</p>
+      <p>Retirez en moins de 2 minutes</p>
+    </div>
+    <div>
+      <p class="mb-4 text-neutral-200">4.</p>
+      <p>Profitez au bureau</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUITS -->
+<section id="produits" class="py-24 px-6 max-w-6xl mx-auto fade-up">
+  <h2 class="text-3xl text-center mb-16">Nos Produits</h2>
+
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+      <h3 class="text-xl mb-2">Barquette Classique</h3>
+      <p class="text-neutral-400 mb-4">4,50€</p>
+    </div>
+
+    <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+      <h3 class="text-xl mb-2">Barquette Exotique</h3>
+      <p class="text-neutral-400 mb-4">6,50€</p>
+    </div>
+
+    <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+      <h3 class="text-xl mb-2">Smoothie Signature</h3>
+      <p class="text-neutral-400 mb-4">6€</p>
+    </div>
+
+    <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+      <h3 class="text-xl mb-2">Jus Pressé</h3>
+      <p class="text-neutral-400 mb-4">5,50€</p>
+    </div>
+
+    <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
+      <h3 class="text-xl mb-2">Toppings Premium</h3>
+      <p class="text-neutral-400 mb-4">+1€</p>
+    </div>
+  </div>
+
+  <div class="text-center mt-12">
+    <a href="#" class="bg-white text-black px-8 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
+      Commander maintenant
+    </a>
+  </div>
+</section>
+
+<!-- ABONNEMENT -->
+<section class="py-24 px-6 fade-up">
+  <div class="max-w-3xl mx-auto border border-neutral-700 p-10 text-center bg-neutral-900">
+    <h2 class="text-3xl mb-6">Pass Matinal — 85€/mois</h2>
+    <ul class="text-neutral-400 space-y-3 mb-8">
+      <li>1 produit par jour ouvré</li>
+      <li>Retrait prioritaire</li>
+      <li>-15% sur gamme premium</li>
+      <li>Accès nouveautés</li>
+    </ul>
+
+    <a href="#" class="bg-white text-black px-8 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
+      Je réserve mon abonnement
+    </a>
+  </div>
+</section>
+
+<!-- ENGAGEMENTS -->
+<section class="py-24 px-6 max-w-3xl mx-auto fade-up">
+  <h2 class="text-3xl text-center mb-12">Nos Engagements</h2>
+  <ul class="space-y-4 text-neutral-400 text-center">
+    <li>Fruits découpés chaque matin</li>
+    <li>Sélection rigoureuse</li>
+    <li>Approvisionnement local privilégié</li>
+    <li>Hygiène irréprochable</li>
+    <li>Expérience rapide et élégante</li>
+  </ul>
+</section>
+
+<!-- OFFRE -->
+<section class="py-24 px-6 text-center bg-white text-black fade-up">
+  <h2 class="text-3xl mb-6">-20% sur votre première commande</h2>
+  <p class="mb-8">Pour toute inscription avant le 12 mars.</p>
+  <a href="#" class="border border-black px-8 py-3 uppercase text-sm tracking-wide hover:bg-black hover:text-white transition">
+    Réserver avant l’ouverture
+  </a>
+</section>
+
+<!-- FAQ -->
+<section class="py-24 px-6 max-w-3xl mx-auto fade-up">
+  <h2 class="text-3xl text-center mb-12">FAQ</h2>
+
+  <div class="space-y-4 text-neutral-400">
+    <details class="border border-neutral-800 p-4">
+      <summary>Les fruits sont-ils coupés sur place ?</summary>
+      Oui, chaque matin.
+    </details>
+
+    <details class="border border-neutral-800 p-4">
+      <summary>Puis-je commander pour plusieurs personnes ?</summary>
+      Oui, réservation multiple possible.
+    </details>
+
+    <details class="border border-neutral-800 p-4">
+      <summary>Y a-t-il du sucre ajouté ?</summary>
+      Aucun sucre ajouté.
+    </details>
+
+    <details class="border border-neutral-800 p-4">
+      <summary>Puis-je annuler ?</summary>
+      Oui, jusqu’à 24h avant.
+    </details>
+
+    <details class="border border-neutral-800 p-4">
+      <summary>Les produits sont-ils disponibles toute la journée ?</summary>
+      Stocks limités chaque jour.
+    </details>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 text-center text-neutral-500 text-sm border-t border-neutral-800">
+  <p class="mb-2">PAPAYA</p>
+  <p>Jarry, Guadeloupe</p>
+  <p>Contact</p>
+  <p>Instagram • LinkedIn</p>
+  <p class="mt-4">Mentions légales</p>
+</footer>
+
+<script>
+  const elements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
       }
-      .badge-soft {
-        background: rgba(255,255,255,.12);
-        border: 1px solid rgba(255,255,255,.18);
-        color: #fff;
-      }
-      .glass {
-        background: rgba(255,255,255,.06);
-        border: 1px solid rgba(255,255,255,.10);
-        backdrop-filter: blur(8px);
-      }
-    </style>
-  </head>
+    });
+  });
+  elements.forEach(el => observer.observe(el));
+</script>
 
-
-  <body class="bg-dark text-light">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
-      <div class="container">
-        <a class="navbar-brand fw-semibold" href="#">URBAN DROP</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div id="nav" class="collapse navbar-collapse">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#concept">Concept</a></li>
-            <li class="nav-item"><a class="nav-link" href="#collection">Collection</a></li>
-            <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-          </ul>
-          <a class="btn btn-primary ms-lg-3" href="#cta">Accéder au drop</a>
-        </div>
-      </div>
-    </nav>
-
-
-    <!-- Hero -->
-    <header class="hero d-flex align-items-center">
-      <div class="container py-5">
-        <div class="row align-items-center g-4">
-          <div class="col-lg-7">
-            <span class="badge badge-soft rounded-pill px-3 py-2 mb-3">
-              Drop limité • Ouverture à 18h00
-            </span>
-            <h1 class="display-5 fw-bold lh-1 mb-3">
-              Collection limitée <span class="text-primary">URBAN DROP</span><br />
-              -30% aujourd’hui
-            </h1>
-            <p class="lead text-secondary mb-4">
-              Une landing page prête pour une campagne à fort trafic : rapide, claire, et orientée conversion.
-              Modifie le texte, le prix, ou le CTA pour ta campagne.
-            </p>
-
-
-            <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-primary btn-lg" href="#cta">Je réserve ma pièce</a>
-              <a class="btn btn-outline-light btn-lg" href="#collection">Découvrir la collection</a>
-            </div>
-
-
-            <div class="d-flex flex-wrap gap-2 mt-4">
-              <span class="badge bg-success-subtle text-success border border-success-subtle">Stock : 1 500 pièces</span>
-              <span class="badge bg-info-subtle text-info border border-info-subtle">Livraison 48h</span>
-              <span class="badge bg-warning-subtle text-warning border border-warning-subtle">Offre limitée</span>
-            </div>
-          </div>
-
-
-          <div class="col-lg-5">
-            <div class="p-4 rounded-4 glass">
-              <h2 class="h5 fw-semibold mb-3">Mini formulaire de conversion</h2>
-              <form>
-                <div class="mb-3">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control" placeholder="prenom.nom@email.com" />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Taille</label>
-                  <select class="form-select">
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                  </select>
-                </div>
-                <div class="d-grid">
-                  <a id="cta" class="btn btn-primary btn-lg" href="#" role="button">
-                    Recevoir le lien du drop
-                  </a>
-                </div>
-                <p class="small text-secondary mt-3 mb-0">
-                  Astuce : remplace ce bouton par ton lien Shopify / Typeform / Calendly.
-                </p>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-
-    <!-- Concept -->
-    <section id="concept" class="py-5">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <div class="p-4 rounded-4 border border-secondary bg-dark">
-              <h3 class="h5 fw-semibold">Performance</h3>
-              <p class="text-secondary mb-0">
-                Une page simple charge vite : meilleure expérience, meilleur taux de conversion.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="p-4 rounded-4 border border-secondary bg-dark">
-              <h3 class="h5 fw-semibold">Disponibilité</h3>
-              <p class="text-secondary mb-0">
-                Ta campagne reste accessible même lors d’un pic de trafic.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="p-4 rounded-4 border border-secondary bg-dark">
-              <h3 class="h5 fw-semibold">Scalabilité</h3>
-              <p class="text-secondary mb-0">
-                Ton hébergement s’adapte à la demande : l’infra soutient le marketing.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Collection -->
-    <section id="collection" class="py-5 bg-black">
-      <div class="container">
-        <div class="d-flex align-items-end justify-content-between mb-4">
-          <div>
-            <h2 class="h3 fw-bold mb-1">La collection</h2>
-            <p class="text-secondary mb-0">3 produits exemples (modifiables en 2 minutes).</p>
-          </div>
-          <a class="btn btn-outline-light" href="#cta">Accéder au drop</a>
-        </div>
-
-
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="card bg-dark border-secondary h-100">
-              <div class="card-body">
-                <h3 class="h5 card-title">Hoodie “Night”</h3>
-                <p class="text-secondary">Coupe oversize • Coton épais • Sérigraphie</p>
-                <p class="mb-0"><span class="fw-semibold text-primary">79€</span> <span class="text-secondary text-decoration-line-through ms-2">99€</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card bg-dark border-secondary h-100">
-              <div class="card-body">
-                <h3 class="h5 card-title">T-shirt “Drop”</h3>
-                <p class="text-secondary">Unisexe • 240g • Edition limitée</p>
-                <p class="mb-0"><span class="fw-semibold text-primary">39€</span> <span class="text-secondary text-decoration-line-through ms-2">49€</span></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card bg-dark border-secondary h-100">
-              <div class="card-body">
-                <h3 class="h5 card-title">Casquette “Urban”</h3>
-                <p class="text-secondary">Broderie • Ajustable • Stock limité</p>
-                <p class="mb-0"><span class="fw-semibold text-primary">29€</span> <span class="text-secondary text-decoration-line-through ms-2">39€</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <p class="text-secondary small mt-4 mb-0">
-          Pour le TP : change les noms, prix, et messages pour ta propre campagne.
-        </p>
-      </div>
-    </section>
-
-
-    <!-- FAQ -->
-    <section id="faq" class="py-5">
-      <div class="container">
-        <h2 class="h3 fw-bold mb-4">FAQ</h2>
-
-
-        <div class="accordion accordion-flush" id="faqAcc">
-          <div class="accordion-item bg-dark border border-secondary rounded-3 mb-2">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
-                Pourquoi une landing page plutôt qu’un site complet ?
-              </button>
-            </h2>
-            <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
-              <div class="accordion-body text-secondary">
-                Une landing page est plus rapide, plus simple, et mieux optimisée pour une conversion.
-              </div>
-            </div>
-          </div>
-
-
-          <div class="accordion-item bg-dark border border-secondary rounded-3 mb-2">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
-                Est-ce que ça tient une campagne à fort trafic ?
-              </button>
-            </h2>
-            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
-              <div class="accordion-body text-secondary">
-                Oui : le principe Cloud (CDN, mise en cache, infrastructure scalable) permet d’absorber un pic, si la page est bien conçue.
-              </div>
-            </div>
-          </div>
-
-
-          <div class="accordion-item bg-dark border border-secondary rounded-3">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
-                Que dois-je modifier pour mon TP ?
-              </button>
-            </h2>
-            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
-              <div class="accordion-body text-secondary">
-                Modifie le titre, l’offre, le CTA, et au moins un bloc “collection”. Ensuite commit sur GitHub : Vercel redéploie automatiquement.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <footer class="py-4 border-top border-secondary">
-      <div class="container d-flex flex-wrap justify-content-between align-items-center">
-        <p class="mb-0 text-secondary">© 2026 URBAN DROP — Demo pédagogique</p>
-        <a class="text-secondary text-decoration-none" href="#top">Haut de page</a>
-      </div>
-    </footer>
-
-
-    <!-- Bootstrap JS (optionnel, pour l'accordion/navbar) -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+</body>
 </html>
