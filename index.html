@@ -19,16 +19,15 @@ body {
 }
 h1,h2,h3 { font-family:'Playfair Display', serif; }
 
-/* SPLASH SCREEN */
+/* SPLASH */
 #splash {
   position:fixed;
   inset:0;
   background:#0E0E0E;
+  z-index:9999;
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:9999;
-  overflow:hidden;
 }
 #splash.fade-out {
   opacity:0;
@@ -36,7 +35,7 @@ h1,h2,h3 { font-family:'Playfair Display', serif; }
   pointer-events:none;
 }
 
-/* HERO IMAGE */
+/* HERO */
 .hero-bg {
   background-image: url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea');
   background-size: cover;
@@ -78,12 +77,11 @@ h1,h2,h3 { font-family:'Playfair Display', serif; }
 
 <body class="text-neutral-200">
 
-<!-- SPLASH SCREEN -->
+<!-- SPLASH INTRO -->
 <div id="splash">
-  <canvas id="fruitCanvas"></canvas>
+  <canvas id="canvas"></canvas>
 </div>
 
-<!-- LANDING CONTENT -->
 <div id="mainContent" class="opacity-0 transition-opacity duration-1000">
 
 <!-- HERO -->
@@ -105,9 +103,14 @@ h1,h2,h3 { font-family:'Playfair Display', serif; }
       Commandez. Récupérez. Commencez votre journée léger.
     </p>
 
-    <button onclick="dropFruits()" class="bg-white text-black px-6 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
-      Réserver mon produit
-    </button>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button onclick="dropFruits()" class="bg-white text-black px-6 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
+        Réserver mon produit
+      </button>
+      <a href="#produits" class="border border-neutral-500 px-6 py-3 uppercase text-sm tracking-wide hover:bg-neutral-800 transition">
+        Découvrir le concept
+      </a>
+    </div>
   </div>
 </section>
 
@@ -143,6 +146,12 @@ h1,h2,h3 { font-family:'Playfair Display', serif; }
     </div>
 
   </div>
+
+  <div class="text-center mt-12">
+    <button onclick="dropFruits()" class="bg-white text-black px-8 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
+      Commander maintenant
+    </button>
+  </div>
 </section>
 
 <footer class="py-12 text-center text-neutral-500 text-sm border-t border-neutral-800">
@@ -152,39 +161,57 @@ h1,h2,h3 { font-family:'Playfair Display', serif; }
 </div>
 
 <script>
-// SPLASH ANIMATION (Fruit Ninja style)
-const canvas = document.getElementById("fruitCanvas");
+// INTRO FRUIT NINJA STYLE
+const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const fruits = ["🍎","🍊","🍉","🍍","🥭","🍓"];
-let slices = [];
+const fruitEmojis = ["🍎","🍊","🍉","🍍","🥭","🍓","🍇","🍒"];
+let particles = [];
 
 function createFruit(){
   return {
     x: Math.random()*canvas.width,
-    y: canvas.height + 50,
-    speedY: - (6 + Math.random()*4),
-    speedX: (Math.random()*4 -2),
-    emoji: fruits[Math.floor(Math.random()*fruits.length)],
-    sliced:false
+    y: canvas.height + 100,
+    size: 40 + Math.random()*20,
+    speedY: -(8 + Math.random()*6),
+    speedX: (Math.random()*6 -3),
+    rotation: Math.random()*360,
+    emoji: fruitEmojis[Math.floor(Math.random()*fruitEmojis.length)]
   };
 }
 
-for(let i=0;i<8;i++){
-  slices.push(createFruit());
+for(let i=0;i<25;i++){
+  particles.push(createFruit());
 }
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  slices.forEach(f=>{
+
+  particles.forEach(f=>{
     f.y += f.speedY;
     f.x += f.speedX;
-    f.speedY += 0.15;
-    ctx.font="40px serif";
-    ctx.fillText(f.emoji,f.x,f.y);
+    f.speedY += 0.25;
+    f.rotation += 5;
+
+    ctx.save();
+    ctx.translate(f.x,f.y);
+    ctx.rotate(f.rotation*Math.PI/180);
+    ctx.font = f.size+"px serif";
+    ctx.fillText(f.emoji,0,0);
+
+    // Explosion effect
+    if(f.y < canvas.height/2 && Math.random()<0.02){
+      ctx.beginPath();
+      ctx.arc(0,0,f.size,0,2*Math.PI);
+      ctx.strokeStyle="rgba(255,255,255,0.5)";
+      ctx.stroke();
+    }
+
+    ctx.restore();
   });
+
   requestAnimationFrame(animate);
 }
 animate();
@@ -194,7 +221,7 @@ setTimeout(()=>{
   document.getElementById("mainContent").classList.remove("opacity-0");
 },5000);
 
-// Scroll animation
+// Scroll reveal
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
@@ -204,18 +231,26 @@ const observer = new IntersectionObserver(entries=>{
 });
 document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
 
-// Fruits falling on click
+// Fruits falling on click or scroll
 function dropFruits(){
-  for(let i=0;i<6;i++){
+  for(let i=0;i<8;i++){
     const fruit = document.createElement("div");
     fruit.classList.add("fruit");
-    fruit.innerHTML = fruits[Math.floor(Math.random()*fruits.length)];
+    fruit.innerHTML = fruitEmojis[Math.floor(Math.random()*fruitEmojis.length)];
     fruit.style.left = Math.random()*100+"vw";
     fruit.style.animationDuration = (3+Math.random()*2)+"s";
     document.body.appendChild(fruit);
     setTimeout(()=>fruit.remove(),5000);
   }
 }
+
+const produitsSection = document.getElementById("produits");
+const fruitObserver = new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){
+    dropFruits();
+  }
+});
+fruitObserver.observe(produitsSection);
 </script>
 
 </body>
