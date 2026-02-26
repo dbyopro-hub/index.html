@@ -9,7 +9,6 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
 body {
@@ -18,11 +17,28 @@ body {
   scroll-behavior:smooth;
   overflow-x:hidden;
 }
-h1,h2,h3 {
-  font-family:'Playfair Display', serif;
+h1,h2,h3 { font-family:'Playfair Display', serif; }
+
+/* SPLASH SCREEN */
+#splash {
+  position:fixed;
+  inset:0;
+  background:#0E0E0E;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  overflow:hidden;
 }
+#splash.fade-out {
+  opacity:0;
+  transition:opacity 1s ease;
+  pointer-events:none;
+}
+
+/* HERO IMAGE */
 .hero-bg {
-  background-image: url('/mnt/data/98a5db834fdc6035b0b1e3436d7ff486.jpg');
+  background-image: url('https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea');
   background-size: cover;
   background-position: center;
   animation: zoom 20s ease-in-out infinite alternate;
@@ -31,6 +47,8 @@ h1,h2,h3 {
   from {transform: scale(1);}
   to {transform: scale(1.08);}
 }
+
+/* Scroll animation */
 .fade-up {
   opacity:0;
   transform:translateY(40px);
@@ -40,10 +58,12 @@ h1,h2,h3 {
   opacity:1;
   transform:translateY(0);
 }
+
+/* Fruits falling */
 .fruit {
   position:fixed;
   top:-50px;
-  font-size:30px;
+  font-size:28px;
   animation: fall linear forwards;
   pointer-events:none;
 }
@@ -57,6 +77,14 @@ h1,h2,h3 {
 </head>
 
 <body class="text-neutral-200">
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <canvas id="fruitCanvas"></canvas>
+</div>
+
+<!-- LANDING CONTENT -->
+<div id="mainContent" class="opacity-0 transition-opacity duration-1000">
 
 <!-- HERO -->
 <section class="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden">
@@ -77,121 +105,117 @@ h1,h2,h3 {
       Commandez. Récupérez. Commencez votre journée léger.
     </p>
 
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <button onclick="dropFruits()" class="bg-white text-black px-6 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
-        Réserver mon produit
-      </button>
-      <a href="#concept" class="border border-neutral-500 px-6 py-3 uppercase text-sm tracking-wide hover:bg-neutral-800 transition">
-        Découvrir le concept
-      </a>
-    </div>
+    <button onclick="dropFruits()" class="bg-white text-black px-6 py-3 uppercase text-sm tracking-wide hover:opacity-90 transition">
+      Réserver mon produit
+    </button>
   </div>
-</section>
-
-<!-- PROBLEME -->
-<section id="concept" class="py-24 px-6 text-center max-w-3xl mx-auto fade-up">
-  <h2 class="text-3xl mb-8">Le matin, tout va vite.</h2>
-  <p class="text-neutral-400 mb-4">
-    Vous voulez manger mieux sans perdre du temps.
-    Et acheter des fruits pour les voir s’abîmer à la maison n’est plus une option.
-  </p>
-  <p class="text-neutral-200 mt-6">
-    Chez PAPAYA, tout est prêt.
-    Frais. Épluché. Découpé.
-    Vous passez, vous prenez, vous filez.
-  </p>
 </section>
 
 <!-- PRODUITS -->
 <section id="produits" class="py-24 px-6 max-w-6xl mx-auto fade-up">
   <h2 class="text-3xl text-center mb-16">Nos Produits</h2>
 
-  <div class="grid md:grid-cols-3 gap-8">
+  <div class="grid md:grid-cols-3 gap-8 text-lg">
 
     <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
-      <div class="flex items-center gap-3 mb-2">
-        <i data-lucide="box"></i>
-        <h3 class="text-xl">Barquette Classique</h3>
-      </div>
-      <p class="text-neutral-400">4,50€</p>
+      🍎 Barquette Classique
+      <p class="text-neutral-400 text-sm mt-2">4,50€</p>
     </div>
 
     <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
-      <div class="flex items-center gap-3 mb-2">
-        <i data-lucide="leaf"></i>
-        <h3 class="text-xl">Barquette Exotique</h3>
-      </div>
-      <p class="text-neutral-400">6,50€</p>
+      🥭 Barquette Exotique
+      <p class="text-neutral-400 text-sm mt-2">6,50€</p>
     </div>
 
     <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
-      <div class="flex items-center gap-3 mb-2">
-        <i data-lucide="coffee"></i>
-        <h3 class="text-xl">Smoothie Signature</h3>
-      </div>
-      <p class="text-neutral-400">6€</p>
+      🍓 Smoothie Signature
+      <p class="text-neutral-400 text-sm mt-2">6€</p>
     </div>
 
     <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
-      <div class="flex items-center gap-3 mb-2">
-        <i data-lucide="wine"></i>
-        <h3 class="text-xl">Jus Pressé</h3>
-      </div>
-      <p class="text-neutral-400">5,50€</p>
+      🍊 Jus Pressé
+      <p class="text-neutral-400 text-sm mt-2">5,50€</p>
     </div>
 
     <div class="border border-neutral-800 p-6 hover:border-neutral-600 transition">
-      <div class="flex items-center gap-3 mb-2">
-        <i data-lucide="plus"></i>
-        <h3 class="text-xl">Toppings Premium</h3>
-      </div>
-      <p class="text-neutral-400">+1€</p>
+      🍍 Toppings Premium
+      <p class="text-neutral-400 text-sm mt-2">+1€</p>
     </div>
 
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="py-12 text-center text-neutral-500 text-sm border-t border-neutral-800">
   PAPAYA — Jarry, Guadeloupe
 </footer>
 
+</div>
+
 <script>
-lucide.createIcons();
+// SPLASH ANIMATION (Fruit Ninja style)
+const canvas = document.getElementById("fruitCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const fruits = ["🍎","🍊","🍉","🍍","🥭","🍓"];
+let slices = [];
+
+function createFruit(){
+  return {
+    x: Math.random()*canvas.width,
+    y: canvas.height + 50,
+    speedY: - (6 + Math.random()*4),
+    speedX: (Math.random()*4 -2),
+    emoji: fruits[Math.floor(Math.random()*fruits.length)],
+    sliced:false
+  };
+}
+
+for(let i=0;i<8;i++){
+  slices.push(createFruit());
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  slices.forEach(f=>{
+    f.y += f.speedY;
+    f.x += f.speedX;
+    f.speedY += 0.15;
+    ctx.font="40px serif";
+    ctx.fillText(f.emoji,f.x,f.y);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+setTimeout(()=>{
+  document.getElementById("splash").classList.add("fade-out");
+  document.getElementById("mainContent").classList.remove("opacity-0");
+},5000);
 
 // Scroll animation
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
     if(entry.isIntersecting){
-      entry.target.classList.add('visible');
+      entry.target.classList.add("visible");
     }
   });
 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
 
-// Fruit animation
+// Fruits falling on click
 function dropFruits(){
-  const fruits = ["🍊","🍍","🍎","🍋","🍓","🥭"];
-  for(let i=0;i<8;i++){
+  for(let i=0;i<6;i++){
     const fruit = document.createElement("div");
     fruit.classList.add("fruit");
     fruit.innerHTML = fruits[Math.floor(Math.random()*fruits.length)];
-    fruit.style.left = Math.random()*100 + "vw";
-    fruit.style.animationDuration = (3 + Math.random()*2) + "s";
+    fruit.style.left = Math.random()*100+"vw";
+    fruit.style.animationDuration = (3+Math.random()*2)+"s";
     document.body.appendChild(fruit);
-
-    setTimeout(()=>{ fruit.remove(); },5000);
+    setTimeout(()=>fruit.remove(),5000);
   }
 }
-
-// Trigger fruits when reaching produits
-const produitsSection = document.getElementById("produits");
-const fruitObserver = new IntersectionObserver(entries=>{
-  if(entries[0].isIntersecting){
-    dropFruits();
-  }
-});
-fruitObserver.observe(produitsSection);
 </script>
 
 </body>
