@@ -4,104 +4,77 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARTMONNI — Studio de design</title>
-<meta name="description" content="Studio de design en communication visuelle dédié aux PME et start-up.">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --primary:#BF5687;
 --accent:#D95BA0;
 --olive:#98A632;
---soft-blue:#EAF1F7;
---bg:#F6F4F0;
+--bg:#F7F5F2;
 --text:#111;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
-html{scroll-behavior:smooth;}
-
 body{
 font-family:'Inter',sans-serif;
 background:var(--bg);
 color:var(--text);
-line-height:1.6;
-overflow-x:hidden;
 }
-
-/* ================= NAVBAR ================= */
 
 nav{
 position:fixed;
 top:0;
 width:100%;
-padding:20px 30px;
+padding:20px 40px;
 display:flex;
 justify-content:center;
-z-index:1000;
-transition:0.4s ease;
-}
-
-nav.scrolled{
 backdrop-filter:blur(14px);
 background:rgba(255,255,255,0.35);
-border-bottom:1px solid rgba(255,255,255,0.3);
+border-bottom:1px solid rgba(0,0,0,0.05);
+z-index:1000;
 }
 
 .nav-container{
-width:100%;
 max-width:1100px;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
 
 nav a{
+margin-left:25px;
 text-decoration:none;
 color:var(--text);
-margin-left:25px;
+cursor:pointer;
 font-weight:500;
-position:relative;
 }
 
-nav a::after{
-content:"";
-position:absolute;
-bottom:-5px;
-left:0;
-width:0;
-height:2px;
-background:var(--primary);
-transition:0.3s;
+.page{
+display:none;
+padding:160px 20px 100px;
+min-height:100vh;
 }
 
-nav a:hover::after{
-width:100%;
-}
-
-/* ================= SECTIONS ================= */
-
-section{
-padding:140px 20px;
-}
+.page.active{display:block;}
 
 .container{
-max-width:1100px;
+max-width:1000px;
 margin:auto;
 }
 
-.section-title{
-font-size:3rem;
+.title{
+font-size:2.8rem;
 font-weight:600;
 line-height:1.2;
 margin-bottom:40px;
 }
 
 .subtitle{
-font-size:1.35rem;
-margin-bottom:50px;
-font-weight:400;
+font-size:1.3rem;
+margin-bottom:40px;
 }
 
 button{
@@ -112,37 +85,17 @@ border:none;
 border-radius:40px;
 font-weight:600;
 cursor:pointer;
-transition:0.4s ease;
+margin-top:20px;
 }
 
-button:hover{
-background:var(--accent);
-transform:translateY(-3px);
-}
-
-/* ================= GLASS ================= */
+button:hover{background:var(--accent);}
 
 .glass{
-background:rgba(255,255,255,0.28);
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,0.35);
-border-radius:22px;
+background:rgba(255,255,255,0.5);
+border:1px solid rgba(0,0,0,0.05);
+border-radius:18px;
 padding:40px;
-transition:0.4s ease;
-box-shadow:0 20px 40px rgba(0,0,0,0.05);
-}
-
-.glass:hover{
-transform:translateY(-6px);
-box-shadow:0 30px 60px rgba(0,0,0,0.08);
-}
-
-/* ================= GRID ================= */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:40px;
+margin-bottom:40px;
 }
 
 .badge{
@@ -152,176 +105,147 @@ margin-bottom:10px;
 display:inline-block;
 }
 
-/* ================= FORM ================= */
+ul{margin-left:20px;margin-bottom:20px;}
 
 input,textarea,select{
 width:100%;
 padding:14px;
-border-radius:12px;
-border:none;
+border-radius:10px;
+border:1px solid rgba(0,0,0,0.1);
 margin-bottom:15px;
 font-family:Inter;
 }
 
-textarea{min-height:120px;}
-
-.checkbox{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:14px;
-margin-bottom:20px;
-}
-
-/* ================= ANIMATIONS ================= */
-
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:all 0.8s ease;
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
-
-/* ================= FOOTER ================= */
-
 footer{
-padding:50px;
+padding:40px;
 text-align:center;
 font-size:14px;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:768px){
-.section-title{font-size:2.2rem;}
-section{padding:100px 20px;}
 }
 </style>
 </head>
 
 <body>
 
-<nav id="navbar">
+<nav>
 <div class="nav-container">
-<strong>ARTMONNI</strong>
+<strong onclick="showPage('home')" style="cursor:pointer;">ARTMONNI</strong>
 <div>
-<a href="#packs">Packs</a>
-<a href="#portfolio">Portfolio</a>
-<a href="#apropos">À propos</a>
-<a href="#contact">Contact</a>
+<a onclick="showPage('packs')">Packs</a>
+<a onclick="showPage('alacarte')">À la carte</a>
+<a onclick="showPage('portfolio')">Portfolio</a>
+<a onclick="showPage('apropos')">À propos</a>
+<a onclick="showPage('contact')">Contact</a>
+<a onclick="showPage('legal')">Legal</a>
 </div>
 </div>
 </nav>
 
-<!-- HERO -->
-<section style="padding-top:200px;">
-<div class="container reveal">
-<h1 class="section-title">
+<!-- HOME -->
+<div class="page active" id="home">
+<div class="container">
+<h1 class="title">
 Une image structurée.<br>
 <span style="color:var(--olive)">Une communication maîtrisée.</span>
 </h1>
 <p class="subtitle">
 Studio de design en communication visuelle dédié aux PME et start-up.
 </p>
-<button onclick="scrollToSection('packs')">Découvrir les packs</button>
+<button onclick="showPage('packs')">Découvrir les packs</button>
 </div>
-</section>
+</div>
 
 <!-- PACKS -->
-<section id="packs">
-<div class="container reveal">
-<h2 class="section-title">Nos Packs</h2>
-
-<div class="grid">
+<div class="page" id="packs">
+<div class="container">
+<h2 class="title">Nos Packs</h2>
 
 <div class="glass">
 <h3>Pack Instagram</h3>
-<p><strong>À partir de 290€</strong></p>
-<p>Communication continue prête à publier.</p>
-<button onclick="scrollToSection('detail-insta')">Découvrir</button>
+
+<p><strong>Formule Semaine — 290€</strong></p>
+<ul>
+<li>4 publications Instagram</li>
+<li>2 stories</li>
+<li>1 cycle de corrections mineures</li>
+</ul>
+
+<p><strong>Formule 2–3 semaines — 520€</strong></p>
+<ul>
+<li>6 publications (dont 1 carrousel)</li>
+<li>4 stories</li>
+<li>2 cycles de corrections</li>
+</ul>
+
+<p><strong>Formule Mois — 890€</strong></p>
+<ul>
+<li>8 publications (dont 2 carrousels)</li>
+<li>6 stories</li>
+<li>1 Reel (rush fourni)</li>
+<li>3 cycles de corrections</li>
+</ul>
+
+<p>Livraison : 5 à 10 jours ouvrés.</p>
+<p>Paiement : 50% à la signature — 50% avant livraison.</p>
+
+<button onclick="showPage('contact')">Lancer mon projet</button>
 </div>
 
 <div class="glass">
 <span class="badge">Best Seller</span>
-<h3>Pack Lancement & Structuration</h3>
-<p><strong>1690€</strong></p>
-<p>Identité complète & lancement stratégique.</p>
-<button onclick="scrollToSection('detail-launch')">Découvrir</button>
-</div>
+<h3>Pack Lancement & Structuration — 1690€</h3>
 
-</div>
-</div>
-</section>
-
-<!-- DETAIL INSTAGRAM -->
-<section id="detail-insta" style="background:var(--soft-blue);">
-<div class="container reveal">
-<h2 class="section-title">Pack Instagram</h2>
 <ul>
-<li>4 à 8 publications Instagram</li>
-<li>Stories incluses</li>
-<li>Reel (selon formule)</li>
-<li>Corrections incluses</li>
-</ul>
-<br>
-<p>Livraison : 5 à 10 jours ouvrés</p>
-<p>Paiement : 50% à la signature — 50% avant livraison</p>
-</div>
-</section>
-
-<!-- DETAIL LANCEMENT -->
-<section id="detail-launch">
-<div class="container reveal">
-<h2 class="section-title">Pack Lancement</h2>
-<ul>
-<li>Identité visuelle complète</li>
+<li>Structuration complète de l’identité visuelle</li>
 <li>Brand Guidelines (~16 pages)</li>
 <li>Kit Instagram de lancement</li>
-<li>Supports imprimés & digitaux</li>
-<li>Plan visuel stratégique</li>
+<li>Carte de visite, flyer, affiche</li>
+<li>Signature mail + présentation PDF</li>
+<li>Plan visuel stratégique de lancement</li>
 </ul>
-<br>
-<p>Livraison : 3 à 4 semaines</p>
-<p>Paiement : 50% à la signature — 50% avant livraison</p>
+
+<p>Livraison : 3 à 4 semaines.</p>
+<p>Paiement : 50% à la signature — 50% avant livraison.</p>
+
+<button onclick="showPage('contact')">Lancer mon projet</button>
 </div>
-</section>
+
+</div>
+</div>
+
+<!-- A LA CARTE -->
+<div class="page" id="alacarte">
+<div class="container">
+<h2 class="title">Prestations à la carte</h2>
+<p>Supports internes, documents commerciaux, guides, présentations spécifiques.</p>
+<p>Chaque demande hors pack fait l’objet d’un devis personnalisé.</p>
+</div>
+</div>
 
 <!-- PORTFOLIO -->
-<section id="portfolio" style="background:var(--soft-blue);">
-<div class="container reveal">
-<h2 class="section-title">Portfolio</h2>
-<div class="grid">
-<div class="glass" style="height:220px;"></div>
-<div class="glass" style="height:220px;"></div>
-<div class="glass" style="height:220px;"></div>
+<div class="page" id="portfolio">
+<div class="container">
+<h2 class="title">Portfolio</h2>
+<p>Exemples de réalisations visuelles professionnelles.</p>
 </div>
 </div>
-</section>
 
 <!-- A PROPOS -->
-<section id="apropos">
-<div class="container reveal">
-<h2 class="section-title">À propos</h2>
-<p>ARTMONNI structure l’image des marques ambitieuses.</p>
+<div class="page" id="apropos">
+<div class="container">
+<h2 class="title">À propos</h2>
+<p>ARTMONNI est un studio indépendant spécialisé dans la structuration visuelle des marques ambitieuses.</p>
 <br>
 <h3>Méthode</h3>
 <p>Analyse — Direction créative — Production — Livraison prête à l’usage.</p>
 </div>
-</section>
+</div>
 
 <!-- CONTACT -->
-<section id="contact">
+<div class="page" id="contact">
 <div class="container">
-<div class="glass reveal">
-<h2 class="section-title">Contact</h2>
+<h2 class="title">Contact</h2>
 
-<form action="https://formspree.io/f/mdalvvnd" method="POST">
-<input type="hidden" name="_redirect" value="https://artmonni.vercel.app/#merci">
-
+<form id="contactForm">
 <input type="text" name="nom" placeholder="Nom complet" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="tel" name="telephone" placeholder="Téléphone">
@@ -335,54 +259,60 @@ Studio de design en communication visuelle dédié aux PME et start-up.
 
 <textarea name="message" placeholder="Décrivez votre projet"></textarea>
 
-<div class="checkbox">
-<input type="checkbox" required>
-<label>J’accepte la politique de confidentialité.</label>
-</div>
-
 <button type="submit">Envoyer la demande</button>
 </form>
 
 </div>
 </div>
-</section>
 
 <!-- MERCI -->
-<section id="merci">
-<div class="container reveal">
-<h2 class="section-title">Merci pour votre demande.</h2>
-<p>
-Nous prendrons contact avec vous dans les plus brefs délais
-afin d’échanger sur votre projet.
-</p>
+<div class="page" id="merci">
+<div class="container">
+<h2 class="title">Merci pour votre demande.</h2>
+<p>Nous prendrons contact avec vous dans les plus brefs délais afin d’échanger sur votre projet.</p>
+<button onclick="showPage('home')">Retour à l’accueil</button>
 </div>
-</section>
+</div>
 
-<footer>
-© 2026 ARTMONNI — Tous droits réservés
-</footer>
+<!-- LEGAL -->
+<div class="page" id="legal">
+<div class="container">
+<h2 class="title">Mentions légales & CGV</h2>
+<p>Nom Prénom — Entrepreneur individuel — Micro-entreprise</p>
+<p>SIRET : XXXXX</p>
+<hr><br>
+<h3>Conditions Générales de Vente</h3>
+<p>Paiement : 50% à la signature, 50% avant livraison.</p>
+<p>Les ajustements mineurs sont inclus. Toute modification structurelle fera l’objet d’un devis complémentaire.</p>
+<p>La publication et la gestion des réseaux sociaux ne sont pas incluses.</p>
+<p>Droit applicable : droit français.</p>
+</div>
+</div>
+
+<footer>© 2026 ARTMONNI — Tous droits réservés</footer>
 
 <script>
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+window.scrollTo(0,0);
 }
 
-/* Navbar scroll effect */
-window.addEventListener("scroll",function(){
-let nav=document.getElementById("navbar");
-nav.classList.toggle("scrolled",window.scrollY>50);
-});
-
-/* Reveal animations */
-const reveals=document.querySelectorAll(".reveal");
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("active");
+document.getElementById("contactForm").addEventListener("submit", function(e){
+e.preventDefault();
+fetch("https://formspree.io/f/mdalvvnd", {
+method: "POST",
+body: new FormData(this),
+headers: { 'Accept': 'application/json' }
+}).then(response => {
+if(response.ok){
+showPage('merci');
+this.reset();
+}else{
+alert("Erreur lors de l'envoi.");
 }
 });
-},{threshold:0.2});
-reveals.forEach(r=>observer.observe(r));
+});
 </script>
 
 </body>
