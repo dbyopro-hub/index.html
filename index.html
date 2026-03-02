@@ -1,284 +1,388 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ARTMONNI — Studio de design en communication visuelle</title>
-<meta name="description" content="Studio de design en communication visuelle dédié aux PME et start-up. Systèmes visuels professionnels livrés prêts à l'utilisation.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTMONNI — Studio de design</title>
+<meta name="description" content="Studio de design en communication visuelle dédié aux PME et start-up.">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --primary: #BF5687;
-  --accent: #D95BA0;
-  --soft-blue: #D5E5F2;
-  --olive: #98A632;
-  --neutral: #F5F3EF;
-  --text: #1a1a1a;
+:root{
+--primary:#BF5687;
+--accent:#D95BA0;
+--olive:#98A632;
+--soft-blue:#EAF1F7;
+--bg:#F6F4F0;
+--text:#111;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+overflow-x:hidden;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--neutral);
-  color: var(--text);
-  line-height: 1.6;
+/* ================= NAVBAR ================= */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 30px;
+display:flex;
+justify-content:center;
+z-index:1000;
+transition:0.4s ease;
 }
 
-section {
-  padding: 120px 20px;
+nav.scrolled{
+backdrop-filter:blur(14px);
+background:rgba(255,255,255,0.35);
+border-bottom:1px solid rgba(255,255,255,0.3);
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
+.nav-container{
+width:100%;
+max-width:1100px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-h1 {
-  font-size: 3rem;
-  font-weight: 600;
-  margin-bottom: 20px;
+nav a{
+text-decoration:none;
+color:var(--text);
+margin-left:25px;
+font-weight:500;
+position:relative;
 }
 
-h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+nav a::after{
+content:"";
+position:absolute;
+bottom:-5px;
+left:0;
+width:0;
+height:2px;
+background:var(--primary);
+transition:0.3s;
 }
 
-p {
-  margin-bottom: 20px;
+nav a:hover::after{
+width:100%;
 }
 
-button {
-  padding: 14px 28px;
-  background: var(--primary);
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 30px;
-  transition: 0.3s ease;
-  font-weight: 600;
+/* ================= SECTIONS ================= */
+
+section{
+padding:140px 20px;
 }
 
-button:hover {
-  background: var(--accent);
+.container{
+max-width:1100px;
+margin:auto;
 }
 
-nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.25);
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  padding: 15px 30px;
-  z-index: 1000;
+.section-title{
+font-size:3rem;
+font-weight:600;
+line-height:1.2;
+margin-bottom:40px;
 }
 
-nav .nav-content {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.subtitle{
+font-size:1.35rem;
+margin-bottom:50px;
+font-weight:400;
 }
 
-nav a {
-  text-decoration: none;
-  color: var(--text);
-  margin-left: 20px;
-  font-weight: 500;
+button{
+padding:14px 28px;
+background:var(--primary);
+color:white;
+border:none;
+border-radius:40px;
+font-weight:600;
+cursor:pointer;
+transition:0.4s ease;
 }
 
-.glass-card {
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 40px;
-  border-radius: 20px;
-  transition: 0.4s ease;
+button:hover{
+background:var(--accent);
+transform:translateY(-3px);
 }
 
-.glass-card:hover {
-  transform: translateY(-5px);
+/* ================= GLASS ================= */
+
+.glass{
+background:rgba(255,255,255,0.28);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,0.35);
+border-radius:22px;
+padding:40px;
+transition:0.4s ease;
+box-shadow:0 20px 40px rgba(0,0,0,0.05);
 }
 
-.pack-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 30px;
+.glass:hover{
+transform:translateY(-6px);
+box-shadow:0 30px 60px rgba(0,0,0,0.08);
 }
 
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
+/* ================= GRID ================= */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
 }
 
-.portfolio-grid div {
-  background: var(--soft-blue);
-  height: 200px;
-  border-radius: 12px;
+.badge{
+color:var(--olive);
+font-weight:600;
+margin-bottom:10px;
+display:inline-block;
 }
 
-footer {
-  padding: 40px 20px;
-  text-align: center;
-  font-size: 14px;
+/* ================= FORM ================= */
+
+input,textarea,select{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:none;
+margin-bottom:15px;
+font-family:Inter;
 }
 
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.6s ease-out;
+textarea{min-height:120px;}
+
+.checkbox{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:14px;
+margin-bottom:20px;
 }
 
-.fade.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* ================= ANIMATIONS ================= */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.2rem;
-  }
-  section {
-    padding: 80px 20px;
-  }
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+padding:50px;
+text-align:center;
+font-size:14px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+.section-title{font-size:2.2rem;}
+section{padding:100px 20px;}
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="nav-content">
-    <strong>ARTMONNI</strong>
-    <div>
-      <a href="#packs">Packs</a>
-      <a href="#alacarte">À la carte</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#apropos">À propos</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
+<nav id="navbar">
+<div class="nav-container">
+<strong>ARTMONNI</strong>
+<div>
+<a href="#packs">Packs</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#apropos">À propos</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
 </nav>
 
-<section style="padding-top:180px;">
-  <div class="container fade">
-    <h1>Une image structurée.<br>Une communication maîtrisée.</h1>
-    <p>Studio de design en communication visuelle dédié aux PME et start-up.</p>
-    <button onclick="scrollToSection('packs')">Découvrir les packs</button>
-  </div>
+<!-- HERO -->
+<section style="padding-top:200px;">
+<div class="container reveal">
+<h1 class="section-title">
+Une image structurée.<br>
+<span style="color:var(--olive)">Une communication maîtrisée.</span>
+</h1>
+<p class="subtitle">
+Studio de design en communication visuelle dédié aux PME et start-up.
+</p>
+<button onclick="scrollToSection('packs')">Découvrir les packs</button>
+</div>
 </section>
 
+<!-- PACKS -->
 <section id="packs">
-  <div class="container">
-    <h2 class="fade">Nos Packs</h2>
-    <div class="pack-grid">
-      <div class="glass-card fade">
-        <h3>Pack Instagram</h3>
-        <p><strong>À partir de 290€</strong></p>
-        <p>Contenus professionnels prêts à publier.</p>
-      </div>
-      <div class="glass-card fade">
-        <h3>Pack Lancement</h3>
-        <p><strong>1690€</strong></p>
-        <p><span style="color:var(--olive)">Best Seller</span></p>
-        <p>Identité complète & kit stratégique.</p>
-      </div>
-    </div>
-  </div>
+<div class="container reveal">
+<h2 class="section-title">Nos Packs</h2>
+
+<div class="grid">
+
+<div class="glass">
+<h3>Pack Instagram</h3>
+<p><strong>À partir de 290€</strong></p>
+<p>Communication continue prête à publier.</p>
+<button onclick="scrollToSection('detail-insta')">Découvrir</button>
+</div>
+
+<div class="glass">
+<span class="badge">Best Seller</span>
+<h3>Pack Lancement & Structuration</h3>
+<p><strong>1690€</strong></p>
+<p>Identité complète & lancement stratégique.</p>
+<button onclick="scrollToSection('detail-launch')">Découvrir</button>
+</div>
+
+</div>
+</div>
 </section>
 
-<section id="alacarte" style="background:var(--soft-blue);">
-  <div class="container fade">
-    <h2>Prestations à la carte</h2>
-    <p>Supports internes, documents commerciaux, guides, présentations.</p>
-    <p>Devis personnalisé selon vos besoins.</p>
-  </div>
+<!-- DETAIL INSTAGRAM -->
+<section id="detail-insta" style="background:var(--soft-blue);">
+<div class="container reveal">
+<h2 class="section-title">Pack Instagram</h2>
+<ul>
+<li>4 à 8 publications Instagram</li>
+<li>Stories incluses</li>
+<li>Reel (selon formule)</li>
+<li>Corrections incluses</li>
+</ul>
+<br>
+<p>Livraison : 5 à 10 jours ouvrés</p>
+<p>Paiement : 50% à la signature — 50% avant livraison</p>
+</div>
 </section>
 
-<section id="portfolio">
-  <div class="container">
-    <h2 class="fade">Portfolio</h2>
-    <div class="portfolio-grid">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
+<!-- DETAIL LANCEMENT -->
+<section id="detail-launch">
+<div class="container reveal">
+<h2 class="section-title">Pack Lancement</h2>
+<ul>
+<li>Identité visuelle complète</li>
+<li>Brand Guidelines (~16 pages)</li>
+<li>Kit Instagram de lancement</li>
+<li>Supports imprimés & digitaux</li>
+<li>Plan visuel stratégique</li>
+</ul>
+<br>
+<p>Livraison : 3 à 4 semaines</p>
+<p>Paiement : 50% à la signature — 50% avant livraison</p>
+</div>
 </section>
 
-<section id="apropos" style="background:var(--soft-blue);">
-  <div class="container fade">
-    <h2>À propos</h2>
-    <p>ARTMONNI structure l’image des marques ambitieuses.</p>
-    <h3>Méthode</h3>
-    <p>Analyse — Direction créative — Production — Livraison prête à l’usage.</p>
-  </div>
+<!-- PORTFOLIO -->
+<section id="portfolio" style="background:var(--soft-blue);">
+<div class="container reveal">
+<h2 class="section-title">Portfolio</h2>
+<div class="grid">
+<div class="glass" style="height:220px;"></div>
+<div class="glass" style="height:220px;"></div>
+<div class="glass" style="height:220px;"></div>
+</div>
+</div>
 </section>
 
+<!-- A PROPOS -->
+<section id="apropos">
+<div class="container reveal">
+<h2 class="section-title">À propos</h2>
+<p>ARTMONNI structure l’image des marques ambitieuses.</p>
+<br>
+<h3>Méthode</h3>
+<p>Analyse — Direction créative — Production — Livraison prête à l’usage.</p>
+</div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact">
-  <div class="container">
-    <div class="glass-card fade">
-      <h2>Contact</h2>
-      <form>
-        <input type="text" placeholder="Nom" required style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;border:none;">
-        <input type="email" placeholder="Email" required style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;border:none;">
-        <textarea placeholder="Message" required style="width:100%;padding:12px;border-radius:8px;border:none;"></textarea>
-        <br><br>
-        <button type="submit">Envoyer</button>
-      </form>
-    </div>
-  </div>
+<div class="container">
+<div class="glass reveal">
+<h2 class="section-title">Contact</h2>
+
+<form action="https://formspree.io/f/mdalvvnd" method="POST">
+<input type="hidden" name="_redirect" value="https://artmonni.vercel.app/#merci">
+
+<input type="text" name="nom" placeholder="Nom complet" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="telephone" placeholder="Téléphone">
+
+<select name="service" required>
+<option value="">Choisir une prestation</option>
+<option>Pack Instagram</option>
+<option>Pack Lancement</option>
+<option>Prestation à la carte</option>
+</select>
+
+<textarea name="message" placeholder="Décrivez votre projet"></textarea>
+
+<div class="checkbox">
+<input type="checkbox" required>
+<label>J’accepte la politique de confidentialité.</label>
+</div>
+
+<button type="submit">Envoyer la demande</button>
+</form>
+
+</div>
+</div>
 </section>
 
-<section id="legal" style="background:#eee;">
-  <div class="container fade">
-    <h2>Mentions légales & CGV</h2>
-    <p>Nom Prénom – Entrepreneur individuel – Micro-entreprise</p>
-    <p>SIRET : XXXXXXXX</p>
-    <p>Adresse : XXXXX</p>
-    <p>Email : XXXXX</p>
-    <hr style="margin:40px 0;">
-    <h3>Conditions Générales de Vente</h3>
-    <p>Paiement : 50% à la signature, 50% avant livraison finale.</p>
-    <p>Les ajustements mineurs sont inclus. Les modifications structurelles font l’objet d’un devis complémentaire.</p>
-    <p>La publication et la gestion des réseaux sociaux ne sont pas incluses.</p>
-  </div>
+<!-- MERCI -->
+<section id="merci">
+<div class="container reveal">
+<h2 class="section-title">Merci pour votre demande.</h2>
+<p>
+Nous prendrons contact avec vous dans les plus brefs délais
+afin d’échanger sur votre projet.
+</p>
+</div>
 </section>
 
 <footer>
-  © 2026 ARTMONNI — Tous droits réservés
+© 2026 ARTMONNI — Tous droits réservés
 </footer>
 
 <script>
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-const faders = document.querySelectorAll('.fade');
-const appearOptions = { threshold: 0.2 };
-
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('visible');
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
+/* Navbar scroll effect */
+window.addEventListener("scroll",function(){
+let nav=document.getElementById("navbar");
+nav.classList.toggle("scrolled",window.scrollY>50);
 });
+
+/* Reveal animations */
+const reveals=document.querySelectorAll(".reveal");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("active");
+}
+});
+},{threshold:0.2});
+reveals.forEach(r=>observer.observe(r));
 </script>
 
 </body>
