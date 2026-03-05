@@ -42,7 +42,6 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-flex-wrap:wrap;
 }
 
 nav a{
@@ -191,15 +190,25 @@ padding:240px 20px 80px;
 margin-top:20px;
 }
 
-.nav-links{
-display:flex;
-gap:25px;
+.nav-container{
+flex-direction:row;
+justify-content:space-between;
+width:100%;
 }
 
 .hamburger{
+display:block;
+}
+
+.nav-links{
 display:none;
-font-size:28px;
-cursor:pointer;
+flex-direction:column;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:white;
+padding:20px;
 }
 
 @media (max-width:768px){
