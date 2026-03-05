@@ -42,6 +42,7 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
+flex-wrap:wrap;
 }
 
 nav a{
@@ -154,6 +155,27 @@ border-radius:20px;
 box-shadow:0 25px 70px rgba(0,0,0,0.08);
 }
 
+  @media (max-width:768px){
+
+nav{
+padding:15px 20px;
+}
+
+.nav-container{
+flex-direction:column;
+gap:10px;
+}
+
+nav a{
+margin:5px 10px;
+font-size:14px;
+}
+
+.title{
+font-size:2rem;
+}
+
+}
 </style>
 </head>
 
