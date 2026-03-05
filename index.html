@@ -55,7 +55,7 @@ font-weight:500;
 
 .page{
 display:none;
-padding:160px 20px 100px;
+padding:200px 20px 100px;
 min-height:100vh;
 }
 
@@ -181,6 +181,50 @@ flex-wrap:wrap;
 justify-content:center;
 }
 
+@media (max-width:768px){
+
+.page{
+padding:240px 20px 80px;
+}
+
+.hero-banner-full{
+margin-top:20px;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+}
+
+.hamburger{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+@media (max-width:768px){
+
+.nav-links{
+display:none;
+flex-direction:column;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:white;
+padding:20px;
+gap:15px;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.hamburger{
+display:block;
+}
+
+}
 }
 </style>
 </head>
@@ -188,19 +232,26 @@ justify-content:center;
 <body>
 
 <nav>
+
 <div class="nav-container">
-  
-<strong onclick="showPage('home')" style="cursor:pointer;">ARTMONNI</strong>
-  
-<a href="#" onclick="showPage('packs'); return false;">PACKS</a>
-<a href="#" onclick="showPage('alacarte'); return false;">À LA CARTE</a>
-<a href="#" onclick="showPage('portfolio'); return false;">PORTFOLIO</a>
-<a href="#" onclick="showPage('apropos'); return false;">À PROPOS</a>
-<a href="#" onclick="showPage('contact'); return false;">CONTACT</a>
-<a href="#" onclick="showPage('legal'); return false;">CGV</a>
+
+<strong onclick="showPage('home')" style="cursor:pointer;">
+ARTMONNI
+</strong>
+
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<div class="nav-links" id="navLinks">
+<a onclick="showPage('packs')">PACKS</a>
+<a onclick="showPage('alacarte')">À LA CARTE</a>
+<a onclick="showPage('portfolio')">PORTFOLIO</a>
+<a onclick="showPage('apropos')">À PROPOS</a>
+<a onclick="showPage('contact')">CONTACT</a>
+<a onclick="showPage('legal')">CGV</a>
 </div>
-  
+
 </div>
+
 </nav>
 
 <!-- HOME -->
@@ -458,10 +509,15 @@ Une image maîtrisée pose des bases solides et durables.<p>
 <footer>© 2026 ARTMONNI — Tous droits réservés</footer>
 
 <script>
+
 function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 window.scrollTo(0,0);
+}
+
+function toggleMenu(){
+document.getElementById("navLinks").classList.toggle("active");
 }
 
 document.getElementById("contactForm").addEventListener("submit", function(e){
@@ -479,6 +535,7 @@ alert("Erreur lors de l'envoi.");
 }
 });
 });
+
 </script>
 
 </body>
