@@ -224,6 +224,11 @@ display:flex;
 display:block;
 }
 
+.nav-links a.active{
+color:var(--olive);
+font-weight:600;
+}
+  
 }
 }
 </style>
@@ -241,13 +246,12 @@ ARTMONNI
 
 <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-<div class="nav-links" id="navLinks">
-<a onclick="showPage('packs')">PACKS</a>
-<a onclick="showPage('alacarte')">À LA CARTE</a>
-<a onclick="showPage('portfolio')">PORTFOLIO</a>
-<a onclick="showPage('apropos')">À PROPOS</a>
-<a onclick="showPage('contact')">CONTACT</a>
-<a onclick="showPage('legal')">CGV</a>
+<a onclick="showPage('packs'); closeMenu()">PACKS</a>
+<a onclick="showPage('alacarte'); closeMenu()">À LA CARTE</a>
+<a onclick="showPage('portfolio'); closeMenu()">PORTFOLIO</a>
+<a onclick="showPage('apropos'); closeMenu()">À PROPOS</a>
+<a onclick="showPage('contact'); closeMenu()">CONTACT</a>
+<a onclick="showPage('legal'); closeMenu()">CGV</a>
 </div>
 
 </div>
@@ -511,15 +515,28 @@ Une image maîtrisée pose des bases solides et durables.<p>
 <script>
 
 function showPage(id){
+
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
+
+document.querySelectorAll('.nav-links a').forEach(link=>{
+link.classList.remove('active');
+});
+
+event.target.classList.add('active');
+
 window.scrollTo(0,0);
+
 }
 
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("active");
 }
 
+function closeMenu(){
+document.getElementById("navLinks").classList.remove("active");
+}
+  
 document.getElementById("contactForm").addEventListener("submit", function(e){
 e.preventDefault();
 fetch("https://formspree.io/f/mdalvvnd", {
