@@ -214,6 +214,7 @@ width:100%;
 background:white;
 padding:20px;
 gap:15px;
+z-index:999;
 }
 
 .nav-links.active{
@@ -228,8 +229,20 @@ display:block;
 color:var(--olive);
 font-weight:600;
 }
-  
+
+.nav-links{
+transform:translateY(-20px);
+opacity:0;
+transition:0.3s ease;
 }
+
+.nav-links.active{
+display:flex;
+transform:translateY(0);
+opacity:1;
+}
+
+  
 }
 </style>
 </head>
@@ -246,6 +259,7 @@ ARTMONNI
 
 <div class="hamburger" onclick="toggleMenu()">☰</div>
 
+<div class="nav-links" id="navLinks">
 <a onclick="showPage('packs'); closeMenu()">PACKS</a>
 <a onclick="showPage('alacarte'); closeMenu()">À LA CARTE</a>
 <a onclick="showPage('portfolio'); closeMenu()">PORTFOLIO</a>
