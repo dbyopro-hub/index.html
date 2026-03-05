@@ -174,7 +174,7 @@ font-size:14px;
 font-size:2rem;
 }
 
-    .nav-links{
+.nav-links{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
@@ -232,6 +232,7 @@ display:flex;
 
 .hamburger{
 display:block;
+cursor:pointer;
 }
 
 .nav-links a.active{
@@ -251,6 +252,10 @@ transform:translateY(0);
 opacity:1;
 }
 
+.hamburger{
+display:none;
+font-size:28px;
+}
   
 }
 </style>
@@ -574,6 +579,21 @@ this.reset();
 alert("Erreur lors de l'envoi.");
 }
 });
+});
+
+  document.addEventListener("click", function(event){
+
+const menu = document.getElementById("navLinks");
+const burger = document.querySelector(".hamburger");
+
+if(menu.classList.contains("active")){
+    
+if(!menu.contains(event.target) && !burger.contains(event.target)){
+menu.classList.remove("active");
+}
+
+}
+
 });
 
 </script>
