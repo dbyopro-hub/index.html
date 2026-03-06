@@ -208,6 +208,10 @@ justify-content:space-between;
 align-items:center;
 }
 
+.packs-grid{
+grid-template-columns:1fr;
+}
+  
 .nav-links{
 display:none;
 flex-direction:column;
@@ -241,6 +245,22 @@ padding:240px 20px 80px;
 margin-top:20px;
 }
 
+.packs-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-top:40px;
+}
+
+.badge{
+background:var(--olive);
+color:white;
+padding:6px 14px;
+border-radius:20px;
+font-size:12px;
+display:inline-block;
+margin-bottom:10px;
+}
 
 }
 </style>
@@ -388,11 +408,19 @@ Une image maîtrisée pose des bases solides et durables.<p>
 </div>
 
 <!-- PACKS -->
+  
 <div class="page" id="packs">
+
 <div class="container">
+
 <h2 class="title">Nos Packs</h2>
 
+<div class="packs-grid">
+
+<!-- PACK INSTAGRAM -->
+
 <div class="glass">
+
 <h3>Pack Instagram</h3>
 
 <p><strong>Formule Semaine — 290€</strong></p>
@@ -420,11 +448,19 @@ Une image maîtrisée pose des bases solides et durables.<p>
 <p>Livraison : 5 à 10 jours ouvrés.</p>
 <p>Paiement : 50% à la signature — 50% avant livraison.</p>
 
-<button onclick="showPage('contact')">Lancer mon projet</button>
+<button onclick="showPage('contact')">
+Lancer mon projet
+</button>
+
 </div>
 
+
+<!-- PACK LANCEMENT -->
+
 <div class="glass">
+
 <span class="badge">Best Seller</span>
+
 <h3>Pack Lancement & Structuration — 1690€</h3>
 
 <ul>
@@ -439,10 +475,16 @@ Une image maîtrisée pose des bases solides et durables.<p>
 <p>Livraison : 3 à 4 semaines.</p>
 <p>Paiement : 50% à la signature — 50% avant livraison.</p>
 
-<button onclick="showPage('contact')">Lancer mon projet</button>
+<button onclick="showPage('contact')">
+Lancer mon projet
+</button>
+
 </div>
 
 </div>
+
+</div>
+
 </div>
 
 <!-- A LA CARTE -->
