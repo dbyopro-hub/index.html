@@ -245,13 +245,6 @@ padding:240px 20px 80px;
 margin-top:20px;
 }
 
-.packs-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-margin-top:40px;
-}
-
 .badge{
 background:var(--olive);
 color:white;
@@ -261,6 +254,20 @@ font-size:12px;
 display:inline-block;
 margin-bottom:10px;
 }
+
+.packs-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-top:40px;
+}
+
+@media (max-width:768px){
+
+.packs-grid{
+grid-template-columns:1fr;
+}
+
 
 }
 </style>
