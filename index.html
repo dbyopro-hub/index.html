@@ -524,20 +524,15 @@ Une image maîtrisée pose des bases solides et durables.<p>
 
 <footer>© 2026 ARTMONNI — Tous droits réservés</footer>
 
+
 <script>
 
 function showPage(id){
 
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-
-document.querySelectorAll('.nav-links a').forEach(link=>{
-link.classList.remove('active');
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
 });
 
-function showPage(id){
-
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 
 window.scrollTo(0,0);
@@ -551,30 +546,35 @@ document.getElementById("navLinks").classList.toggle("active");
 function closeMenu(){
 document.getElementById("navLinks").classList.remove("active");
 }
-  
+
 document.getElementById("contactForm").addEventListener("submit", function(e){
+
 e.preventDefault();
+
 fetch("https://formspree.io/f/mdalvvnd", {
-method: "POST",
-body: new FormData(this),
-headers: { 'Accept': 'application/json' }
-}).then(response => {
+method:"POST",
+body:new FormData(this),
+headers:{ 'Accept':'application/json'}
+}).then(response=>{
+
 if(response.ok){
 showPage('merci');
 this.reset();
 }else{
 alert("Erreur lors de l'envoi.");
 }
-});
+
 });
 
-  document.addEventListener("click", function(event){
+});
+
+document.addEventListener("click", function(event){
 
 const menu = document.getElementById("navLinks");
 const burger = document.querySelector(".hamburger");
 
 if(menu.classList.contains("active")){
-    
+
 if(!menu.contains(event.target) && !burger.contains(event.target)){
 menu.classList.remove("active");
 }
