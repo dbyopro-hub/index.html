@@ -154,80 +154,6 @@ border-radius:20px;
 box-shadow:0 25px 70px rgba(0,0,0,0.08);
 }
 
-  @media (max-width:768px){
-
-nav{
-padding:15px 20px;
-}
-
-.nav-container{
-flex-direction:column;
-gap:10px;
-}
-
-nav a{
-margin:5px 10px;
-font-size:14px;
-}
-
-.title{
-font-size:2rem;
-}
-
-.nav-links{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-@media (max-width:768px){
-
-.page{
-padding:240px 20px 80px;
-}
-
-.hero-banner-full{
-margin-top:20px;
-}
-
-.nav-container{
-flex-direction:row;
-justify-content:space-between;
-width:100%;
-}
-
-.hamburger{
-display:block;
-}
-
-}
-    
-.nav-links{
-display:none;
-flex-direction:column;
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-background:white;
-padding:20px;
-}
-
-@media (max-width:768px){
-
-.nav-links{
-display:none;
-flex-direction:column;
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-background:white;
-padding:20px;
-gap:15px;
-z-index:999;
-}
-
 .nav-links.active{
 display:flex;
 }
@@ -259,7 +185,63 @@ display:none;
 font-size:28px;
 cursor:pointer;
 }
-  
+
+/* HAMBURGER PAR DÉFAUT (ordinateur) */
+
+.hamburger{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+/* MENU MOBILE */
+
+@media (max-width:768px){
+
+nav{
+padding:15px 20px;
+}
+
+.nav-container{
+flex-direction:row;
+justify-content:space-between;
+align-items:center;
+}
+
+.nav-links{
+display:none;
+flex-direction:column;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:white;
+padding:20px;
+gap:15px;
+z-index:999;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.hamburger{
+display:block;
+}
+
+.title{
+font-size:2rem;
+}
+
+.page{
+padding:240px 20px 80px;
+}
+
+.hero-banner-full{
+margin-top:20px;
+}
+
+
 }
 </style>
 </head>
@@ -554,7 +536,10 @@ document.querySelectorAll('.nav-links a').forEach(link=>{
 link.classList.remove('active');
 });
 
-event.target.classList.add('active');
+function showPage(id){
+
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 
 window.scrollTo(0,0);
 
